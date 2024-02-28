@@ -1,0 +1,298 @@
+<html>
+	<head>
+		<title>
+			sv_loadingurl
+		</title>
+		<style>
+			@keyframes spin
+			{
+				0%
+				{
+					transform: rotate(-60deg);
+				}
+
+				50%
+				{
+					transform: rotate(60deg);
+				}
+
+				100%
+				{
+					transform: rotate(-60deg);
+				}
+			}
+
+			@keyframes in
+			{
+				0%
+				{
+					opacity: 0;
+				}
+
+				100%
+				{
+					opacity: 1;
+				}
+			}
+
+			body
+			{
+				margin: 0;
+				overflow: hidden;
+				user-select: none;
+				color: black;
+				text-align: center;
+				text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+				background-color: moccasin;
+				box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.25);
+			}
+
+			#container
+			{
+				display: flex;
+				visibility: hidden;
+				flex-direction: column;
+				justify-content: space-around;
+				align-items: center;
+				height: 100%;
+				opacity: 0;
+				animation: in 3s forwards;
+				animation-delay: 500ms;
+			}
+
+			#header
+			{
+				display: block;
+				font-family: Impact;
+			}
+
+			#header *
+			{
+				margin: 2px;
+			}
+
+			#servername
+			{
+				font-size: 64px;
+			}
+
+			#mapname
+			{
+				font-size: 32px;
+			}
+
+			#description
+			{
+				display: flex;
+				padding: 12px;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+				background-color: rgba(0, 0, 0, 0.1);
+				border-radius: 12px;
+				box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.1);
+			}
+
+			#english, #russian
+			{
+				display: none;
+				font-family: Verdana;
+				font-size: 18px;
+				line-height: 24px;
+			}
+
+			#separator
+			{
+				display: block;
+				margin: 0 20px;
+				height: 75%;
+				border: 1px dashed rgba(0, 0, 0, 0.25);
+			}
+
+			#content
+			{
+				display: flex;
+				flex-direction: column;
+				justify-content: left;
+				align-items: flex-end;
+				font-family: Verdana;
+				font-size: 12px;
+			}
+
+			#entry
+			{
+				display: flex;
+				flex-direction: row;
+				justify-content: right;
+				align-items: center;
+				margin: 4px;
+				padding: 6px;
+				background: greenyellow;
+				border-radius: 6px;
+			}
+
+			#entry img
+			{
+				display: inline-block;
+				margin-left: 8px;
+				height: 12px;
+			}
+
+			#icon
+			{
+				display: block;
+				height: 48px;
+				filter: drop-shadow(0px 0px 100px rgba(0, 0, 0, 0.1));
+				animation: in 3s forwards, spin 5s ease-in-out infinite;
+			}
+			
+			#loading
+			{
+				display: block;
+				font-family: Courier;
+			}
+
+			#loading *
+			{
+				padding: 2px;
+			}
+
+			#status
+			{
+				font-size: 24px;
+				font-weight: 1000;
+			}
+
+			#fileName
+			{
+				font-size: 18px;
+				font-weight: 500;
+			}
+
+			#davy, #furfy
+			{
+				display: none;
+				position: absolute;
+				bottom: 0;
+				left: 100px;
+				height: 320px;
+				opacity: 0;
+				filter: drop-shadow(0px 0px 100px rgba(0, 0, 0, 0.1));
+				animation: in 3s forwards;
+				animation-delay: 1.5s;
+			}
+		</style>
+		<script defer>
+			/*
+			window.onload = function()
+			{
+				GameDetails('[Wire, PA] Marry\'s God | in-dev.', 'www.google.com', 'gm_ps_hugeflatconstruct_svn', '8', 'STEAM_123', 'Sandbox', '0.25', 'en');
+				SetStatusChanged('Downloading the map');
+				DownloadingFile('gay-stuff.png');
+			}
+			*/
+
+			function GameDetails(servername, serverurl, mapname, maxplayers, steamid, gamemode, volume, language)
+			{
+				let description = 'english';
+				let image = ['resources/davy', 'resources/furfy'][Math.floor(Math.random() * 2)];
+
+				switch(language)
+				{
+					case 'ru':
+					case 'ua':
+						description = 'russian';
+						break;
+				}
+
+				document.getElementById(description).style.display = 'block';
+				document.getElementById(image).style.display = 'block';
+				document.getElementById('servername').textContent = servername;
+				document.getElementById('mapname').textContent = mapname;
+				document.getElementById('container').style.visibility = 'visible';
+			}
+
+			function SetFilesTotal(total)
+			{
+
+			}
+
+			function DownloadingFile(fileName)
+			{
+				document.getElementById('fileName').textContent = fileName;
+			}
+
+			function SetStatusChanged(status)
+			{
+				document.getElementById('status').textContent = status;
+			}
+
+			function SetFilesNeeded(needed)
+			{
+
+			}
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<div id="servername"></div>
+				<div id="mapname"></div>
+			</div>
+			<div id="description">
+				<div id="english">
+					Hey!<br>
+					Welcome to an <b>unpopular</b> and <b>dead</b> gamemode.<br>
+					It's kinda okay and playable if you love to <b>create</b>.<br>
+					<b>Weapons</b> are prohibited, <b>PvP</b> is on, optional <b>invulnerability</b>.<br>
+					<b>Duplicator</b> is a laggy mess, use <b>Advanced Duplicator 2</b> instead.<br>
+					There is no «scary» <b>nextbots</b> or <b>maps</b>, don't ask.<br>
+					Thanks for reading!
+				</div>
+				<div id="russian">
+					Приветик!<br>
+					Добро пожаловать на <b>непопулярный</b> и <b>мёртвый</b> игровой режим.<br>
+					Он вполне неплохой если вам нравится <b>создавать</b>.<br>
+					<b>Оружия</b> запрещены, <b>PvP</b> включено, <b>неуязвимость</b> по своему желанию.<br>
+					<b>Дубликатор</b> это лагучая фигня, лучше используйте <b>Advanced Duplicator 2</b>.<br>
+					Здесь нету «страшных» <b>некстботов</b> или <b>карт</b>, не спрашивайте.<br>
+					Спасибо что прочитали!
+				</div>
+				<div id="separator"></div>
+				<div id="content">
+					<div id="entry">
+						Counter-Strike: Source
+						<img src="resources/mark.svg" />
+					</div>
+					<div id="entry">
+						Half-Life 1: Source
+						<img src="resources/mark.svg" />
+					</div>
+					<div id="entry">
+						Half-Life 2: Episode 1
+						<img src="resources/mark.svg" />
+					</div>
+					<div id="entry">
+						Half-Life 2: Episode 2
+						<img src="resources/mark.svg" />
+					</div>
+					<div id="entry">
+						Half-Life 2: Lost Coast
+						<img src="resources/mark.svg" />
+					</div>
+					<div id="entry">
+						Day of Defeat: Source
+						<img src="resources/mark.svg" />
+					</div>
+				</div>
+			</div>
+			<img id="icon" src="resources/hamburger.svg" />
+			<div id="loading">
+				<div id="status">...</div>
+				<div id="fileName">...</div>
+			</div>
+			<img id="davy" src="resources/davy.png" />
+			<img id="furfy" src="resources/furfy.png" />
+		</div>
+	</body>
+</html>

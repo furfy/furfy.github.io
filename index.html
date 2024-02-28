@@ -1,0 +1,123 @@
+<html>
+	<head>
+		<title>
+			Пёсичный Сайтик!
+		</title>
+		<style>
+			body
+			{
+				margin: 0;
+				overflow: hidden;
+				user-select: none;
+				background-color: bisque;
+				font-family: Verdana;
+				text-align: center;
+				text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+			}
+
+			#container
+			{
+				display: flex;
+				height: 100%;
+				flex-direction: column;
+				justify-content: space-around;
+				align-items: center;
+			}
+
+			#basic
+			{
+				display: flex;
+				padding: 6px;
+				flex-direction: row;
+				justify-content: space-between;
+				background-color: rgba(0, 0, 0, 0.25);
+				border-radius: 10px;
+				box-shadow: 0 0 32px rgba(0, 0, 0, 0.25);
+			}
+
+			#basic > *
+			{
+				margin: 12px;
+				max-width: 250px;
+			}
+
+			#description
+			{
+				display: block;
+			}
+
+			#title
+			{
+				margin: 4px;
+				font-size: 22px;
+			}
+
+			#biography
+			{
+				font-size: 16px;
+				line-height: 22px;
+			}
+
+			#menu
+			{
+				display: flex;
+				flex-direction: column;
+				justify-content: left;
+				align-items: center;
+			}
+
+			.button
+			{
+				all: unset;
+				display: block;
+				margin: 2px;
+				padding: 6px;
+				font-size: 12px;
+				border-radius: 4px;
+				transition: background-color 500ms;
+			}
+
+			.button:hover
+			{
+				cursor: pointer;
+				background-color: orange;
+				transition: background-color 500ms;
+			}
+
+			#furfy
+			{
+				display: block;
+				position: absolute;
+				height: 240px;
+				bottom: 0;
+			}
+		</style>
+		<link rel="icon" href="hamburger.svg" type="image/icon" />
+	</head>
+	<body>
+		<div id="container">
+			<div id="basic">
+				<div id="description">
+					<div id="title">
+						Привет, я пёсик!
+					</div>
+					<div id="biography">
+						Я глупый и ничего не умею, тяф-тяф! Только всякие глупости..
+					</div>
+				</div>
+				<div id="menu">
+					<a class="button" href="loading.html">
+						Загрузочный экран Garry's Mod.
+					</a>
+					<a class="button" href="https://runelite.net/plugin-hub/show/polywoof">
+						Плагин-переводчик для RuneLite!
+					</a>
+					<a class="button" href="https://discord.com/oauth2/authorize?client_id=293813376067567616&permissions=268476416&scope=bot">
+						Мой глупый Discord-бот.
+					</a>
+				</div>
+			</div>
+			<img id="furfy" src="resources/furfy.png" />
+		</div>
+	</body>
+</html>
