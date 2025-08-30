@@ -1,0 +1,242 @@
+<html>
+	<head>
+		<title>
+			Доггивилль
+		</title>
+		<style>
+			body
+			{
+				display: flex;
+				flex-direction: column;
+				align-items: start;
+				padding: 32px;
+				background-color: #222;
+			}
+			body > *
+			{
+				margin: 8px;
+			}
+			.header
+			{
+				font-size: 48px;
+				color: #f80;
+			}
+			.header div
+			{
+				font-size: 16px;
+			}
+			.features
+			{
+				padding-left: 16px;
+			}
+			.features li
+			{
+				margin: 4px;
+				font-size: 14px;
+			}
+			.specifications td
+			{
+				margin: 4px;
+				font-size: 14px;
+				text-align: left;
+			}
+			.specifications td:last-child
+			{
+				padding-left: 64px;
+				text-align: right;
+			}
+			.note
+			{
+				position: absolute;
+				margin: 2px;
+				font-size: 10px;
+				color: #ff0;
+			}
+			.warn
+			{
+				color: #f00;
+			}
+			a
+			{
+				display: inline-block;
+				text-decoration: dotted;
+			}
+			a:hover
+			{
+				text-decoration: underline dotted;
+			}
+			*
+			{
+				margin: 0;
+				padding: 0;
+				font-family: monospace;
+				color: #fff;
+			}
+		</style>
+		<script>
+			const today = new Date();
+			const rtf = new Intl.RelativeTimeFormat(navigator.language,
+			{
+				numeric: "auto"
+			});
+			const relative =
+			{
+				day: -86400000,
+				hour: -3600000,
+				minute: -60000,
+				second: Infinity
+			};
+			
+			function last_update(id, timestamp)
+			{
+				const element = document.getElementById(id);
+				const date = new Date(timestamp);
+				const time_ago = date.getTime() - today.getTime();
+				for(const unit in relative)
+				{
+					const time = relative[unit];
+					if(time_ago < time)
+					{
+						const format = rtf.format(Math.ceil(time_ago / Math.abs(time)), unit);
+						element.textContent = element.textContent.replace("?", format);
+						return format;
+					}
+				}
+			}
+			
+			window.onload = () =>
+			{
+				last_update("last-update-plugin", 1756635010000);
+				last_update("last-update-patch", 1757084804000);
+			};
+		</script>
+	</head>
+	<body>
+		<h1 class="header">
+			Доггивилль
+			<div>
+				(это такой же скучный варкрафт-сервер, как и эта страничка) 🐶
+			<div>
+		</h1>
+		<ul class="features">
+			<li>
+				ванильный сервер с небольшими изменениями
+			</li>
+			<li>
+				полная бодрость за час отдыха
+			</li>
+			<li>
+				возможность изучить все профессии
+			</li>
+			<li>
+				всего две подписи для создания гильдии
+			</li>
+			<li>
+				поддерживается русский язык
+			</li>
+		</ul>
+		<table class="specifications">
+			<tr>
+				<td>
+					client:
+				</td>
+				<td>
+					enUS 1.12.1 5875
+				</td>
+			</tr>
+			<tr>
+				<td>
+					core:
+				</td>
+				<td>
+					<a href="https://github.com/cmangos/mangos-classic">
+						mangos-classic
+					</a>
+					<span class="note">
+						(CMaNGOS)
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					registration:
+				</td>
+				<td>
+					<a href="invite">
+						invite
+					</a>
+					<span class="note">
+						(Discord)
+					</span>
+				</td>
+			</tr>
+		</table>
+		<h1 class="header">
+			Русификатор
+			<div>
+				(на самом деле истинное назначение странички) 🦴
+			</div>
+		</h1>
+		<ul class="features">
+			<li>
+				использует перевод клиента 1.14
+			</li>
+			<li>
+				не требуется замена оригинального WoW.exe
+			</li>
+			<li>
+				маленький вес архива ~130MiB
+			</li>
+			<li>
+				возможность писать все имена на любом языке
+			</li>
+			<li>
+				переведён генератор имён
+			</li>
+			<li>
+				для работы плагина нужен
+				<a href="https://github.com/hannesmann/vanillafixes">
+					VanillaFixes
+				</a>
+			</li>
+			<li class="warn">
+				на стадии тестирования и поиска ошибок
+			</li>
+		</ul>
+			<table class="specifications">
+				<td>
+					dll-plugin:
+				</td>
+				<td>
+					<a href="resources/polywow.dll">
+						polywow.dll
+					</a>
+					<a id="last-update-plugin" class="note" href="https://github.com/furfy/polywow-toolkit/polywow.cpp">
+						(обновлён: ?, source soon)
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					russian-pack:
+				</td>
+				<td>
+					<a href="https://mega.nz/file/xtph0ZiY#B1WiJAn03lJHmzQyxZWraV-fUSHOF8le5jCaawY5Il8">
+						Data/patch-3.MPQ
+					</a>
+					<span id="last-update-patch" class="note">
+						(обновлён: ?)
+					</span>
+				</td>
+			</td>
+			<tr>
+				<td>
+					classic-db:
+				</td>
+				<td>
+					TBD
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
